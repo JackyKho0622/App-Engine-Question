@@ -7,10 +7,10 @@ import {
 } from '@dynatrace/strato-components-preview/conversion-utilities';
 import {
   DataTable,
+  TableColumn,
 } from '@dynatrace/strato-components-preview/tables';
 import { useDqlQuery } from '@dynatrace-sdk/react-hooks';
 import { queryForQ1 } from './query1';
-import { queryExecutionClient } from "@dynatrace-sdk/client-query";
 import { Heading } from '@dynatrace/strato-components';
 
 export const HostList = () => {
@@ -20,18 +20,36 @@ export const HostList = () => {
     },
   });
 
-//   const width = Dimensions.get('window').width;
+  const columns: TableColumn[] = [
+    {
+      header: 'ID',
+      accessor: 'ID',
+      autoWidth: true,
+    },
+    {
+      header: 'Name',
+      accessor: 'Name',
+      autoWidth: true,
+    },
+    {
+      header: 'AWS Instance Type',
+      accessor: 'AWS Instance Type',
+      autoWidth: true,
+    },
+  ];
+
 
   return (
     <Flex width="100%" flexDirection="column" justifyContent="center" gap={16}>
       
-      <Heading as="h3" >EC2 instance cost overview</Heading>
-      
+      <Heading as="h3" >EC2 instance cost overview</Heading>  
         {result.data && (
         <DataTable 
-        data={result.data.records} columns={convertToColumns(result.data.types)}
+          data={result.data.records} columns={columns}
         >
+          <DataTable.Pagination />
         </DataTable>
+        
       )}
       
     </Flex>
