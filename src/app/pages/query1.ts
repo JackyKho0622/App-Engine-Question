@@ -16,4 +16,5 @@ export const queryForQ1 =
 //   | fieldsAdd idle = arrayAvg(idle), ioWait = arrayAvg(ioWait), user = arrayAvg(user), system = arrayAvg(system), steal = arrayAvg(steal)
 //   | fieldsAdd other = 100 - idle - ioWait - user - system - steal
 // ], sourceField:hostId, lookupField:dt.entity.host, fields:{idle, ioWait, user, system, steal, other}`
+
 ;
