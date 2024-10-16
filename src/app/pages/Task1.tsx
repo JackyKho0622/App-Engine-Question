@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import { Flex } from '@dynatrace/strato-components/layouts';
 import { TitleBar } from '@dynatrace/strato-components-preview/layouts';
 import {
@@ -10,8 +10,9 @@ import {
   TableColumn,
 } from '@dynatrace/strato-components-preview/tables';
 import { useDqlQuery } from '@dynatrace-sdk/react-hooks';
-import { queryForQ1 } from './query1';
+import { queryForQ1 } from '../queries/query1';
 import { Heading } from '@dynatrace/strato-components';
+import { ProgressCircle } from '@dynatrace/strato-components';
 
 export const HostList = () => {
   const result = useDqlQuery({
@@ -23,31 +24,31 @@ export const HostList = () => {
   const columns: TableColumn[] = [
     {
       header: 'ID',
-      accessor: 'ID',
+      accessor: 'id',
       autoWidth: true,
     },
     {
       header: 'Name',
-      accessor: 'Name',
+      accessor: `name`,
       autoWidth: true,
     },
     {
       header: 'AWS Instance Type',
-      accessor: 'AWS Instance Type',
+      accessor: 'awsInstanceType',
       autoWidth: true,
     },
   ];
 
-
   return (
     <Flex width="100%" flexDirection="column" justifyContent="center" gap={16}>
       
-      <Heading as="h3" >EC2 instance cost overview</Heading>  
+      <Heading as="h3" >EC2 instance cost overview</Heading> 
+        {result.isLoading && <ProgressCircle />} 
         {result.data && (
         <DataTable 
           data={result.data.records} columns={columns}
         >
-          <DataTable.Pagination />
+        <DataTable.Pagination />
         </DataTable>
         
       )}
