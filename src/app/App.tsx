@@ -12,6 +12,7 @@ import { Home } from './pages/Home';
 import { HostList } from './pages/Task1';
 import { Header } from './components/Header';
 import { Data } from './pages/Data';
+import { Task2 } from './pages/Task2';
 
 export const App = () => {
   return (
@@ -31,6 +32,7 @@ export const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/data" element={<Data />} />
           <Route path="/Task1" element={<HostList />} />
+          <Route path="/Task2" element={<Task2 />} />
         </Routes>
       </Page.Main>
     </Page>
