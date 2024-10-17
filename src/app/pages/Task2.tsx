@@ -16,12 +16,6 @@ import { ProgressCircle } from '@dynatrace/strato-components';
 import { functions } from '@dynatrace-sdk/app-utils';
 import { queryForQ2 } from '../queries/query2';
 
-interface EC2Record {
-  id: string;
-  name: string;
-  awsInstanceType: string;
-}
-
 export const Task2 = () => {
   const [price, setPrice] = useState({});
   let total = 0;
