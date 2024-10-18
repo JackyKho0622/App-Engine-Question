@@ -14,7 +14,7 @@ import { queryForQ1 } from '../queries/query1';
 import { Heading } from '@dynatrace/strato-components';
 import { ProgressCircle } from '@dynatrace/strato-components';
 
-export const HostList = () => {
+export const Task1 = () => {
   const result = useDqlQuery({
     body: {
       query: queryForQ1,
