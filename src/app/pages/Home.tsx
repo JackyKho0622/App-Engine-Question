@@ -8,6 +8,7 @@ import {
 } from "@dynatrace/strato-components";
 import { AppHeader, AppNavLink } from "@dynatrace/strato-components-preview";
 import { Link, NavLink } from "react-router-dom";
+import { Card } from "../components/Card";
 
 export const Home = () => {
   const theme = useCurrentTheme();
@@ -26,16 +27,15 @@ export const Home = () => {
       <Flex gap={48} paddingTop={64} flexFlow="wrap">
         <AppHeader>
           <AppHeader.NavItems>
-            <AppHeader.NavItem as={Link} to="./Task1">
+            <AppHeader.NavItem as={Link} to="/Task1">
               Task1
             </AppHeader.NavItem>
-            <AppHeader.NavItem as={Link} to="./Task2">
+            <AppHeader.NavItem as={Link} to="/Task2">
               Task2
             </AppHeader.NavItem>
-            <AppHeader.NavItem as={Link} to="./Task3">
+            <AppHeader.NavItem as={Link} to="/Task3">
               Task3
-            </AppHeader.NavItem>
-            
+            </AppHeader.NavItem> 
           </AppHeader.NavItems>
         </AppHeader>
       </Flex>
