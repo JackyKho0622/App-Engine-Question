@@ -13,11 +13,10 @@ import { CriticalIcon } from "@dynatrace/strato-icons";
 import React, { useState } from "react";
 
 export const Data = () => {
-  const initialQuery =
-    "fetch logs \n| summarize count(), by:{bin(timestamp, 1m)}";
+  const initialQuery = 
+  "fetch logs \n| summarize count(), by:{bin(timestamp, 1m)}";
 
-  const [editorQueryString, setEditorQueryString] =
-    useState<string>(initialQuery);
+  const [editorQueryString, setEditorQueryString] = useState<string>(initialQuery);
   const [queryString, setQueryString] = useState<string>(initialQuery);
 
   const { data, errorDetails, isLoading, cancel, refetch } = useDqlQuery({
