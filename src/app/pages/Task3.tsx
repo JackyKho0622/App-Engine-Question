@@ -1,5 +1,5 @@
 import React, { Profiler, useEffect, useState } from 'react';
-import { Flex } from '@dynatrace/strato-components/layouts';
+import { Flex, Surface } from '@dynatrace/strato-components/layouts';
 import { Text } from '@dynatrace/strato-components';
 import {
   convertToColumns,
@@ -100,7 +100,7 @@ record(CPU = array(53.71,46.32,45.36,43.39,48.75,46.67,41.65,44.62,39.69), dt.en
 
   return (
     <Flex width="100%" flexDirection="column" justifyContent="center" gap={16}>
-      
+      {/* <Surface> */}
       <Heading as="h3" >EC2 instance cost overview</Heading> 
         {EC2.isLoading && <ProgressCircle />} 
         <Text as="p">
@@ -108,6 +108,10 @@ record(CPU = array(53.71,46.32,45.36,43.39,48.75,46.67,41.65,44.62,39.69), dt.en
         </Text>
         {EC2.data && (
         <DataTable data={EC2.data.records} columns={columns} >
+           <DataTable.Toolbar>
+              <DataTable.DownloadData />
+              <DataTable.LineWrap />
+            </DataTable.Toolbar>
             <DataTable.ExpandableRow>
                 {({ row }) => {
                     // console.log(row);
@@ -127,10 +131,11 @@ record(CPU = array(53.71,46.32,45.36,43.39,48.75,46.67,41.65,44.62,39.69), dt.en
                     );
                 }}
             </DataTable.ExpandableRow>
-          <DataTable.Pagination />
+          <DataTable.Pagination defaultPageSize={10}/>
         </DataTable>
 
       )}
+      {/* </Surface> */}
     </Flex>
   );
 };
