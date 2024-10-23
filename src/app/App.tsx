@@ -29,7 +29,7 @@ export const App = () => {
           <Route path="/Task1" element={<Task1 />} />
           <Route path="/Task2" element={<Task2 />} />
           <Route path="/Task3" element={<Task3 />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
         </Routes>
       </Page.Main>
     </Page>
