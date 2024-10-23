@@ -103,38 +103,38 @@ record(CPU = array(53.71,46.32,45.36,43.39,48.75,46.67,41.65,44.62,39.69), dt.en
       {/* <Surface> */}
       <Heading as="h3" >EC2 instance cost overview</Heading> 
         {EC2.isLoading && <ProgressCircle />} 
-        <Text as="p">
-          Your EC2 instance costs are ${total.toFixed(2)}
-        </Text>
-        {EC2.data && (
-        <DataTable data={EC2.data.records} columns={columns} >
-           <DataTable.Toolbar>
-              <DataTable.DownloadData />
-              <DataTable.LineWrap />
-            </DataTable.Toolbar>
-            <DataTable.ExpandableRow>
-                {({ row }) => {
-                    // console.log(row);
-                    const cpuMetrics = fetchCPUUsageMetrics(row.id);
-                    
-                    console.log(cpuMetrics);
-                    return (
-                        <Flex flexDirection='column'>
-                            <Heading as='h4'>CPU Usage</Heading>
-                            {cpuMetrics.isLoading ? (<ProgressCircle/>) :(
-                            <TimeseriesChart 
-                            data={convertToTimeseries(cpuMetrics.data?cpuMetrics.data.records:[],cpuMetrics.data?cpuMetrics.data.types: [] )}
-                            gapPolicy="connect"
-                            variant="line"/>)}
-                        </Flex>
-                        
-                    );
-                }}
-            </DataTable.ExpandableRow>
-          <DataTable.Pagination defaultPageSize={10}/>
-        </DataTable>
-
-      )}
+          <Text as="p">
+            Your EC2 instance costs are ${total.toFixed(2)}
+          </Text>
+          {EC2.data && (
+          <DataTable data={EC2.data.records} columns={columns} >
+            <DataTable.Toolbar>
+                <DataTable.DownloadData />
+                <DataTable.LineWrap />
+                <DataTable.ColumnOrderSettings/>
+              </DataTable.Toolbar>
+              <DataTable.ExpandableRow>
+                  {({ row }) => {
+                      // console.log(row);
+                      const cpuMetrics = fetchCPUUsageMetrics(row.id);
+                      
+                      console.log(cpuMetrics);
+                      return (
+                          <Flex flexDirection='column'>
+                              <Heading as='h4'>CPU Usage</Heading>
+                              {cpuMetrics.isLoading ? (<ProgressCircle/>) :(
+                              <TimeseriesChart 
+                              data={convertToTimeseries(cpuMetrics.data?cpuMetrics.data.records:[],cpuMetrics.data?cpuMetrics.data.types: [] )}
+                              gapPolicy="connect"
+                              variant="line"/>)}
+                          </Flex>
+                          
+                      );
+                  }}
+              </DataTable.ExpandableRow>
+              <DataTable.Pagination defaultPageSize={10}/>
+          </DataTable>
+          )}
       {/* </Surface> */}
     </Flex>
   );
